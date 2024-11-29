@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colégio Estadual Yvone Pimentel</title>
+    <style>
+        /* Reset e Estilos Gerais */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; color: #333; background-color: #f4f6fb; overflow-x: hidden; }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background: linear-gradient(135deg, #004aad, #0073e6);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 2;
+            transition: background 0.3s;
+        }
+        header h1 { font-size: 2.4em; margin-bottom: 5px; }
+        nav { display: flex; justify-content: center; gap: 15px; }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 15px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        nav a:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
+
+        /* Layout das Seções */
+        section {
+            margin: 30px auto;
+            padding: 25px;
+            max-width: 800px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        h2 { color: #0073e6; font-size: 1.8em; margin-bottom: 15px; }
+
+        /* Efeitos de Parallax */
+        .parallax {
+            background-image: url(https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/imagem/migrados/galeria/328/GG__0550.JPG);
+            height: 300px;
+            background-attachment: fixed;
+            background-size: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Galeria de Fotos */
+        .gallery { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .gallery img {
+            width: 120px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .gallery img:hover { transform: scale(1.05); box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); }
+
+        /* Formulário de Contato */
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .contact-form button:hover { background-color: #005bb5; }
+
+        /* Rodapé */
+        footer {
+            background: #004aad;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 0.9em;
+            position: relative;
+            z-index: 2;
+        }
+        footer h3 { font-size: 1.4em; margin-bottom: 10px; }
+        footer p { margin-bottom: 10px; }
+        footer .footer-links { display: flex; gap: 15px; justify-content: center; }
+        footer .footer-links a { color: white; text-decoration: none; font-size: 0.9em; }
+        footer .footer-links a:hover { text-decoration: underline; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Colégio Estadual Yvone Pimentel</h1>
+        <nav>
+            <a href="#galeria">Galeria</a>
+            <a href="#agenda">Agenda</a>
+            <a href="#noticias">Notícias</a>
+            <a href="#contato">Contato</a>
+            <a href="#areaAluno">Área do Aluno</a>
+        </nav>
+    </header>
+
+    <div class="parallax"></div>
+
+    <section id="galeria">
+        <h2>FOTOS DO COLÉGIO</h2>
+        <div class="gallery">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdLJfFVgcxviiPhKg49dNXI0f-85sO1uKj8NX59n3JgYOAb0uIX7__evYudgep3YkYmX8&usqp=CAU">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIWFRUXFhUXFRUVFRUVFRcWFxUWFhUXFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0mHyUtLS0tLy0tLS0tLS0tLS0tLS0tLS0tLS0tLSstLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALcBEwMBIgACEQEDEQH/xAAcAAAABwEBAAAAAAAAAAAAAAAAAgMEBQYHAQj/xABIEAABAwIDBAYFCAcHBAMAAAABAAIDBBESITEFBkFRBxMiYXGBMpGhsdEUFiMkQlKSwTM0U2KiwvAVVGNygrLxCERzsyWT4f/EABkBAAIDAQAAAAAAAAAAAAAAAAEDAAIEBf/EACkRAAICAQMDAwQDAQAAAAAAAAABAhEDEiExEzJBBFFxFCJhgZGh8NH/2gAMAwEAAhEDEQA/ACRNT2EJvEE7iCSXHDAlWpNiVCJDtkYBcRgoQM1KhJtSgQIHaEoAiNKUDkSHQEcBFBRgVCBrKi9Kc4bDGLuF3fZNjx5K8rNumE9mH/MfcUY8glwLdEk5eJruebEek4ngNLrRgFmfQ03szn94f7QtNCkuSLgFkEELqoQLq5ddChDq6uLqhDiCF0FCHFwrq4gQI5KRopR2IoDDhLNSbUq1XRUMEcIoRkQBkLLgXbogBZdRguKEM4jCcxpGMJdiWNHLE5pZQ03LQ7uKbMSoUIQFd0gdXI5hpWnCbXvqkx0hs40o/EFTd4B9Zl/zJgCt0cUWlsZXOVmiN6QYv7r/ABBKDpAg40zvWPis4RXBW6MPYHUkaWOkGm/u7/WPilB0gUv7B/s+Ky0tPArnb5odGBOrI1Yb/wBJ+ykRxv8AUf7OT1LJ+scl6WOWQ2a2/fwVZYoJWwrKzUxv9Rfck9RUXtvbuyqvD17JTh0ycPcqo2gYwXmfbuCHy6jb9kn1rPrxvsTfwWcn5LbsLb2yqQOELZWhxucnHPzUt8/KH/E/C74LPW7Qo3fZI9aVFHDJ+ikz5FTVBd0WiKT8Mvvz7oecn4HfBd+fVDzk/A74LNKmldH6Qy58EiD4Jyx45K0TXI1Eb80P3pPwO+C78+KH7z/wO+Cy8X7l0A80ejAmuRqHz4ovvP8AwO+CHz4ovvP/AAO+CzNoTeorg3K3Djl7PIqsscFyFSkzVfntR85PwO+Ce7K3ggqHFsYfcC+YI96wx+03uHL4f0EjFWOB1t4E3B+CTJR8IYr8novEhdYfsreyqgsI5S5o+w/tt8M8x5ELQN3N+IqgiOW0Uh0z7Du4E+ic9D60pouXAo7Sm8hyTKxLrElC6DVk01LNSEWgS7UxC2GCMihdKIDoQXAhdEAs1BdagoQzpiXjSDUuxLGjliVCTjSoUIZVvMPrMnioxS29X6y/xUQSulDtRinyGuuOJRQ5APVioQvdyXQ88lx0w5JWiHWPDANVG6VsCH2yqEym5yYNSntdtZsY6uEAW1crZu5PRg/JntZjAyJt2lPS7s0pN+oZ6tVh2yS1S48Ieo0qRkbIjIC9ztCL3OaPPTQC/bvoR+a0mt3Ho3gloMZ44DkPEKKd0aNt+sDET2W21WlTiV0sp0lLSkuwutkMN+fFEOzQ1pka4WBtkc1bp+jjACHTDrMsLLeldSmz9wKdv6V7nkai5Db9wCjmiKL9ilUVaLYJe03mi1+yGs7bM2nv0Wnw7n0mvUCyj9utoYR1LWDGcrA+j3lZ6UZaobe6L0/JmzGAJQBLVtN1by3hwSK0ppq0UEqx5DezqTYJGTYVQWghpw6nidO/VWLdPZzaipa0i7WAudy7vatIrKVoaABkFzvUZqlsdD0+DVG2YY3YlQ42w2sfysg/YErTa2fd+S1aanAvko2Ydyz/AFDNH0sTL3UkkZs5COWzgCdCdeVh8FolfRtLC4NF7clnVew4rEcdU/Hk1GfLi0Gvbh7dNRF1TiS+IDtc2aNufvDT1KxNHaWTbi7Q6mpi5PBY7Xj6J9dlrbPTUkii4JWNLNSUaWamIUzoXSuBdKIALgQQCIBw1cXWoKEM7Ylo0jGl2JY0dRpUBJRpYKEMs3uH1h/iohTG+Q+sP8fyUOF0odqMU+WJXXcQXMK49iuUA7Cp3dmFoD5T9kZKukFWKhBbRuPO6zer7NK8tItj5sippMTy+5ve4PustC6ONsTTyOhe7EA3Fc+l4Kk0GyHSR48bWk3wtOptqrP0SfrT/wDxn3pk0tNLwGF6kaHSVEUoJiIJBIc2+YINiCgIWvexj7gtddjuIy0uoDc7Y7sc87PSMsgydkQHHUKwVuzqpwycwEacyVmclY9W0KbToYo5BLm6S2EEm5AOtuSI8BrMT3YWNzuePeUjT0FXfE9zLnKztfWm29uzpn0r8f2RfJ1hlzQ1IJX95d73hobTmwd9s8u5UaSoc5xc4kuJuSdbpztMnq4vBdptkSOjdLkGtF+ZPkm4ncbYt7sdbSOOJknHQqHJUrTG9M6/ApjQS2d9nOwGLQHECD7FTE9MZJeGwpW0Wvo9qIYhNJNK1huAATnha0k2Gp0PqVnl21TSZMla4+OfqKgNidbgqDEA912Adq4b6d7m+eQBy5qvT01R8qLSQ9ptg7AbiJOfZBJaO+6x5cNvk6WPJpiqLjWVDAWi/paKu7T2pEw2eXX+61rifcpHbMdmtLGOb9HYXzHo6+GR9ap8scljZzmyFwIIAth4gi2ZOWaVjwpxcrG5MrTpInYtsQ4e0HtFrnG3D3Wz49yqW9VK1jmuYbse0FhvwIv7iFYB1whe04XjDkXAZaa8D7EpvA+SOkhjIZIwYWBkjA8N7BHYce2zMfZcFaFRlyUyXKPBX90AXVEIyv1jB5XuVtEY7SybdbZ7oJ2SvANnMAF+LiBf1Fa2wdopjkm9jO4OK3JNiWCRYlgmoQzq6UVdKIDi61EJRmogHIQRQUFCGeMS8abtSzCljR7GUsE2jchUVjIxd7gPFQiVmb76frD/ABUKCpbe2dr5nOabgnIqHxLpY+1GKe0mFeuDNckekw9MF2KGIqfoGl1I9vEXUAJVObtz3Lozo4LL6pPRfs0y8KsdbsuvE8XYXC+FpHazUl0W1GGuLXWBcxwA7wdFDbHk6id7HcQcI5ngLpSrx0tQyoYA3tA2Bv2vtApm0uPJZbU/Y0LdmpmifWwMF3tlxtH7r87getTc9XWZ2ZcgAsu3InvPBUpm92KpNZDHcYAx7NHG2d1O0XSRTPIEgfGe8ZeazXu1QxNVyS9NVVzicbGC17cQeVlH73bRlbQydaLOccIHcUbaXSDRx5NJkPANCq+8W8fyxrS+Pq42HEATm48MkuX2/cWbVUis7XOERjk3NSNHZlI8kHE7iQQLH3qGY0zyWsSCc7ZkNUzt17WsZTxuJGRsb5dy0QjpikxY1hypnd5UZGpPapDI2RjxKi2NubDMnIAak8ghg3Tl7sjNI3LkJpnvcw9p9sbRiBDRb0Rm23h3p5QwxyylkYsRm9xGEtBNsr8dfUo/caqwQSw4gXNdisM8OMaX0Ju06J3s6la7rXyEZmxubaHL2rl5tpuJ2sG8Ewu88RLiARlpyy0VXFQGSdU9uJxF22scr8yU43pma5xa6Q4dAGkm9vvFQjnRMAcHtFiALmxvwtdVV1ReXuTbYjIWgtwtDrlpsS6wNgQMgL2d5BPto0rXsaHC9nBw8Rf4qMo6xxsT/R0Us+EyDCDYnjrYnLTzUjyCVUR+71E6SexBMWPrGl2pwuvkNQMreavTPSKb7H2YKdhZfE4auta4OYy4Z3HknDPSKdGNGTLk1vYkWJUJGNLBaEZWdXHFAohKIDoRgiBGRIOAUFwFBQBnbSlWlZyNrzD7ZSzNuTD7arpL2aTGUy3iga6BxcASBkqW7eWdnpcr6JjLvXLINbi+ilBU6djbaN7C4sU3tknG0pzJZx1Nk3douhj7UY8juTYg9csjAXCLmmCg4S1PUFjg4agpBrjyXSXckGr2YUyyV8JnY2aI2e3M+STpJ/lREdQ8MANwRlnpa3NROzNqPidkLg6hS9TStnHWQkB2tu9YbeB6Zdvh+34Y5PVuhCt2XUUri5jrt5jS3C6H9qh36WIE8wu/2tKxhinjLhcG47iMvYl4tswSYRI0BuMud2c7D0R7k2UIz3a/aAnXA3/tGNubIgDzK4KaoqTmbC18+y1PqnaNGI5GsbdxJLDbTkuO3ke9rRFGb5YrgEacEI44x+6v2y1+LFoJI6WMOb+nabOBOff5ItFCbuqJTzIukmRAEy1BzOdkzr9s9YbAENGgS3Lq/bDjy/8AgeOQVUxe4uKcbOFhJJxYzs9znPbHfxAe4jvAUaKocj6k6oqoXLTkHjCSdAbhzSe7E1t+660UkqQFyT+49YGTljjYSNwj/MDdv8w8wrS3ZEZk6118THuLRe7S08Cw9l2vFZs5zmusWlrmnzBGliPetA3Y26J2YZOzIMr6B5sTl32BJCwerxPV1I/s6Ho8yrpv9B9q7bLQWgQj0h2YSCbm+iq1YetsZDisbhpAAvzsFYttxx3JtfJQcTB4BZdbZtkl7HaEaD+tSrPso/Sxt43BPln+SqhrWtPY15qT2DWlsrXHPPzN8rDvUiqYuW6ZoEuvkfePiU1j9IpV0ocRhIIw4rjPX0fX2vUkYz2j4p7MS4JGNLJGNKXTUKZ0lcK4ulEgF1FuuogFwguhBQB5hirGu45pzTdsi3FHpdgSueGFoaDxUpFsWWOZgDQWNObhqVWUqTaLpBt6I5Ora5wthbbJVmJjrXDDbmAVqleY5GhrmFw5Jq2OJos2mNu+yVhlKcbkqZedRe25RZT2WeC48hPNugdfYNwD7vJWPYG61Mab5VVvc1hcGtDTbU2ufNdSLSijDJNyZR3WR2uC0zZ+4NG4Suxvla1wDerOdiAbeKbt3RoI2PqJjI2EPEbWkkEG9iT5lHqxK9OSM7bZKNcFpWz9xKORkxZIX2JEbg790Gx5lR+8m58NNQiYX64Fodnlc6iynUi3QdEkrKKWpSGVzTdpse5X3Z+7FFLTx1eMiNrHGYF2eID2cU6fuVTGTG3F1JhDm5n03GwzVXOPDCoMpkO2ja0jA5K/KaR2sdvJW6p3Roj1sEeMTQsY9ziTY3vl7CnNZuLSi72g4BE7EMRyfYEH3rO8WK9rXwXqRSBPSDRl/JB+1wB9GwN8Vbtv7uUcFN1nUFx6sHF1liCRyJTLcrd2CekEssXWOMmE9rDYXtdDpY6t2/lh+66KdPPiN3uuiCVnMLRm7l0QLbNxAzlt7k9mxOFPIdxKMSyOMYMbmjq230IBxH3JynFbJA0szFkrToUdrh3LS6Lc+mdFHgpmOc5vac5xGHO1zzT1+4FICHYbBrbO+6T9496nUQdLMwbVOsBk4DIYmtfYcgXAkDu0StDVubNE8n0XtsNBa4uABkLi+i1Gj3UonuDWwAhtsTsxc8gL8fFDeaSDZ1OXU8UbJXuEUb2sbcyPNhnqWtvfyHNUlONPYslJEXtbZrXX1Bz0Kp9dSvvY3tyWhzgZepQVRR4ncLLiqVHdlGypMpsKe0b8JB8EtX2x2CLQ7PfPKyFtxiuXkfZjHpO8dAO9wTI3J0Jm1BNsvO7VX18IcRhcS83tbGA9wa8+IAz46p0xpDiCOKXgpmxsAAwgNAAGQDRk0AeC5G/nnc8fetrxnOUhwwpS6I2I3AHHRNa/aUMDmtmlZGXZNDnAX9atTK2Pl0pJr0YlQACV1pRCUdmqJB0EEAuqAMKj2qb4jZOWbTJ0IVcGzrDORSGyqcag370vVY7RXJNtqXFOIXknNIxxKS2bAwvaJHYW8SjZRpFH20frDvAKd2JvdFHB8lqYTJGHBzbcwbgEeKntobC2UXkvqXgu4c/YmrtgbGGs8mXefgtayw0pMz6JW2glJ0hQgStdTua17gWiMhtgABmQdU3i34p7PhfTOfAXB7Wk3Ide+dzzT6Ld/Y7iAJJDfTM5p0d1tkjUy+tymvETTkIiPpDwklsGH6VrwGkAYQLWPemO8G+hqoJITGQXyYwb6AaD2K2M3R2XYENkN/3nJZu5+zf2cn4j8VOpjTDom0Z1Q7fMdFLSYL9Yb4r6eSfyb5y/JGUobYsLfpL6hpBGXkr9Hubs7hC78R+KVG59B+wPm4/FTq4wdOfuUir6QHOjIbA1srw1r5L5kBFG/wDMHTHqxhlYG4b+iQLXV7+atAP+2HrVMrN5dkRPcw0RJaSDllcIKePwg6J+WJVe/Inj6t9NHfBgDib2y8FFwbde2lNIMgXYsYJDtb2yV83aioKuLrmUbWtuQMQF8slNDYlH/dY/UEOrBeA6JMznZW9EkELI2ta4MeXgkm5Jve/rTyn3tq5BGyNrS8lzIha5LpDYZHLjbNW/bUVHTQulNNFfINBaM3nJo8OJ7gVB9EdB8orpKlwu2GJpblYdZKXWtwyaH5d4TIyi4uVFJJpqNmhbvbJ+SwBkjy9wGKR5v2nHlyaNAOXmkamR07g0ZM4Dn/8Aqd7WmL3iFul8/HilxDgaANTk3u5lIe45bBqOC3Zbk0ZX5k6lZXv7VuqtpRQRC8VK4YradZcF1+/K3ktQ27tFtFSSTuNurYSL8XnT2ledN3N4JY5pJ/SL3Fzw7R1+B5HvVJQlOLjHkkZxjkTlwv8AI1nadVhZp2ikaJzMJeTc2yHeoT570rx22SNPLCHDyIP5JnU76049Bkjj4Bo9ZP5LnfTZrrSdb6nDV6kLdVhcXO71fd1NhdUzE4fSS2c++rWfYZ453Pee5VPcBktfKZ5GBlPERZupkk1ALjq0ZE2A4arTy/CHPP8AR4LXgwuDuXJhz51k2jwRu1Dikwjw8kaKhBItw0SNMLkuOpKlY+y0u4nILSZxA4Whzzk1oOfIDMledN4NruqamWoJ9N3ZHKMZMHqztzJW19I1aYdmy4fSfgi/+x4a7+EuWBVD7uIHAgeadjW1ipvwXHdPfp9PaKYY4uBv22eF8iO5axR1bJWNkjdia4XBH9ZHhZecZTY2V+6O95OqeIJD9HKbAnRsmg8nCw8bedZ473RISrZmqXzSsYSI1S8azjhyEEAUEQHnttMLPFuCPuueyRyKDKxl3Z5EIm7EgxvHC+SpRE90W+ntbNOJLWyTSIZJUjJRF2RldYzxeKeV0LTHILDM8u5RUrvrTe5S8soDXXPEqFBRkIEUBtxsn1c3RR0lYwwR2Olj7VIz1bHAWKBZMd0UnYapensVCbOeCzI6EqWhysoXJKEJUhNoZOacAqACyaHwK87bxD6zMP8AEd716FqX2a48gfcvO22ZcU8jjxc73q8CsjVeih31Idz3f7irs1U3opYBRDvc7/cVdQqPksjP+kivu9sQ0jYXn/M4Ot6g0fiVz6JaP5PspsxHanJkz5ACOMeFmYv9SyfeSqdNPUubmXSujaBqcIaxlvZ61vnyARQQUjNIo42fhaG/ktk1phGJmhvJyObHpjnK7jonTBifiPOzfzTmVuFoYOAt8Ui+ZsTHyuybG0k+AFz7koY2ZH0/bwfoqFh0+kltz+yD5H2rMNmDLSw4ou8G1XVdVLUPPpvJHc2/ZA7rIkcmQATcWzEyX2/I8yJNvMp3u5smSsnbFHliObuTRq49wH5c0yiaXDA3Vxstt3B3cFHDd4+mkAxc2N1DfG+Z9XBXyTorFW6LJsigjp4mQRCzGCw5k8XHvJzS203WaGDxKWpRn3DNMqp93ErOaA1JHcgJWun7TWDhqj0YwsLjqbqLp345bqEKz0x1GGmgb96a5/0xSEe2yxKgN3+d/UtW6cKnOmj7pnHyEbR/uKyfZZzce73p0HwhclyCR/b8fiU5oruDm+BHiMh70yk9JOtnn8/cT+SsuSslSN23M2p8ppIpCe0BgkvrjZ2XX8bA+asEZWadFddaWaDg9rZmDvFmSe9nqWls1WacalQ6LtWOAggEFUJ5tjmh43t4JTZNXHHKTezTooprDg80n1d8lQKjuX2HeCAC2NP4ttwydhjrlZzFR81M7uU2GYHuKloY47WOqraQE5I4HM8AlZK8uxHGLEHJRVW3tyDgSg5gDRbVCymh7D/+1sLA0uaeFuIUzSbYhIa0OGK2ipsdDftJ9RUgDw4oaty6gXSk3hp42kOdbNO2730wt9IqHUUIcbXyBK6Nkjhmg5DFA0Nm+lL+0CdRb6Un7RZtBscE5hO2bIaOCDkFQTL/ADb4UjmkdZqCPYsR2k8GR5GmN1vC5Vxk2cwNcQ3gVRpTmUzG7sVlilVGn9H28lPBShkj7OxOy8yrP89aThJc8B38Fmu7mzGyQtJHEqSqdlRxsc8DNoJHjwVNVzr8l9CUL/AnuBTddXUzTneqxO7xGBK714CvRUDbuLz5LAuh2PFtCA/ddUHzMBA95XoO1gt2V7mLEqQjKblU3pk2h1Gy3tac5C2PLkTc+2yukI7QWTf9QdV2KeMHVznEd3A/wpQZ8GJsanUJSACsm4u77q2oDNI29qV3Brb+88Amp1uCfBc+jHdr/u5W3sfomni4faPcPf4LT6dudykaeMBrWRtwsaA1o7hp4p4yLs24kpTbbtl4x0ocA2YSowi5sn9W7INTWnHavyUYQ205cLA0cky2S3MlJ182NxTqiZhagEyfprmvUwjlC8/ifb+VZ1sx1sXgrv0xv+vsB0NMz/2zKhUps4juKbF8FJLZhpDmU82dqO9wHry/NMHHMp9Rmwaf3h7wrx5KT4LbuJU4Kumdze6J3g9pDR6w1bWzVYJsiTBKD+zmjf5NkBPsut7GqXmW6ZbE9hcLiAQSRh5ij0tYpRkIvc3SkZPNPIoydVncjUoCcLOSe0LzG4OSbrt0CUAJ1UsOnwFewFxJ4m6SwdyWLClI4ShqDpCRA20R4mXRXxu4Zp7DGAFLDQWOFO4mALjAlYG80LDQZoSjQO9DCOaWGilkojtrPwxPIvaxWdPC0TeR9qZ/gs8JT8XBny8l93Sk+rMHK6ebdktTv77D2qN3Lzg/1H3lOt6X2hw94PvUxRvKg5JVifwOOhM//Ixjul/9T16CmK8/dCDb7Rb3Ryn+G38y9ASFasnJkhwFhF/UsQ/6gJPrNO3gIv5n/FbdE7J5WGdPzvrNMP8ACcT+M/FLDLx8mW4l6B6P92/ktHG0i0krRNMeQdmxpvybl5lYbu9RddUwxfflY3yxC63npB2i5lM9kRILnNiuMtciG2/da5F7k8hdo790sJdE3HMWg3LAMOWva4m/K6aRdI7G26yllY29r3DvYQPeq3u5QRPiLZIWlxc9gIaBlE2MnGW2v+lADv8AlOqnZlC1pk9FoYC4NdJiDnZOZhLjiIvY5WzNyeFtlsybl/odrRVLOtieHN9RB5OGoKE84a0Z2Libd5zNvUCsx3X25EytZHBF1ccl2OxPc5zjY4CRfCLO5cz4K1bWYXVIIuS0U54kNHXOLy37vZZnzySc0+mrryl/Lr+hmOOp1fv/AErJ6Nl8ynUbwL+CpNQJmyOka54cZLMMnWFgDpcNnNuA5mEkgcBa3Mq7PragyYXyh4GPHZgY2wcWsLG3JBJa7VxFgUmHqIt1T7nH+Fd/A2WFpXfiyqdM0QMtPMRq2Rh8Wua5o/ics3PpjwWp9KMYfTMd9yVp8iHN95Cyw+kD3Fa09hD5OJ9D6I8Uwan0foBMgLyErHnI8ffY4edslv8ARTY2Mf8AeY134mg/mvPrH2cx3Ky3fd39Wp//AAxj1MAQz8IGLlkqEFxdWccecYoL6J4yM80EFjbN6R10ljYpdh7kEFZrYC5DHXRGzv3LiCAWLMN8kpleyCCKQGLxtSpj70EELDQfAumM80EEbBRD70ktgNze+So5KCC0Y+0zZe4tO41YAXRHjmE+3kkxNd45eFv+UEFo9NFa5P8AAj1EnoivyP8AoUlw7Rb3xyj+EO/lW+SSrqCM+SsOAsc4s71rD+nlpNVTu4GEgfjKCCX5DLx8kJ0X0YdXwX4Yn+AaL38dFqm+8DnbPdI0ZtkbLY29G7m/z38kEFd9xWO6ZTdlbcbA+56zDaV2KJ4DrTCJxAxD7JjHkV3ebemKaF0UMs8gcW361sYaGtdi7JaA69wBysSggr0iN+CI3dpS6spo7C7LyvOQytjGfHRo81eto0tQ9/YLA29wXXdYfaxMuMRINhYi2HMnRBBJyK2NhsQtPVvEcbg3E51hZoYwl+C7bm4s29ybHQ2zUhSS2a4ltjfCRle7b62y48Ms0EFzvQTlODcndSZs9VFRkkl4RX993Y6Z4Gupv3G49yy2I/mfcEEF0YmSR2NSIHYCCCfjEZORyw3Ytq6PqzraKK+rcTD5G49hCCCGXtBj5LOgggs48//Z" alt="Foto 2">
+            <img src="https://www.educacao.pr.gov.br/sites/default/arquivos_restritos/files/imagem/2022-03/img_5130.jpg" alt="Foto 3">
+        </div>
+    </section>
+
+    <section id="agenda">
+        <h2>Agenda Escolar</h2>
+        <ul>
+            <li>01/12 - Reunião de pais</li>
+            <li>05/12 - Feira de Ciências</li>
+            <li>15/12 - Encerramento do Ano Letivo</li>
+        </ul>
+    </section>
+
+    <section id="noticias">
+        <h2>Notícias</h2>
+        <p>Confira as últimas novidades do colégio e da comunidade escolar.</p>
+        <article>
+            <h3>Projeto Sustentabilidade é Destaque</h3>
+            <p>Alunos do ensino médio realizam projetos de sustentabilidade que foram premiados em evento estadual...</p>
+        </article>
+    </section>
+
+    <section id="contato">
+        <h2>Formulário de Contato</h2>
+        <form class="contact-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <section id="areaAluno">
+        <h2>Área do Aluno/Responsável</h2>
+        <p>Acesse boletins, calendários e informações importantes.</p>
+        <button onclick="alert('Login de área restrita em construção')">Entrar</button>
+    </section>
+
+    <footer>
+        <h3>História do Colégio Estadual Yvone Pimentel</h3>
+        <p>Fundado em 1967, o Colégio Estadual Yvone Pimentel é um pilar educacional oferecendo ensino fundamental, médio e EJA.</p>
+        <div class="footer-links">
+            <a href="#galeria">Galeria</a>
+            <a href="#agenda">Agenda</a>
+            <a href="#noticias">Notícias</a>
+            <a href="#contato">Contato</a>
+            <a href="#areaAluno">Área do Aluno</a>
+        </div>
+        <p>&copy; 2024 Colégio Estadual Yvone Pimentel. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Scroll suave
+        const links = document.querySelectorAll('nav a[href^="#"]');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Revelação das seções ao rolar a página
+        const sections = document.querySelectorAll('section');
+        const options = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: "0px 0px -50% 0px"
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
